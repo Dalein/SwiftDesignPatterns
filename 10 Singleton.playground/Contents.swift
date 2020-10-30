@@ -1,0 +1,32 @@
+import UIKit
+
+class Logger {
+    static let shared = Logger()
+    
+    private init() {}
+    
+    func log(_ message: String) {
+        print(message)
+    }
+    
+}
+
+
+protocol Logging {
+    func log(_ message: String)
+}
+
+extension Logging {
+    func log(_ message: String) {
+        Logger.shared.log(message)
+    }
+}
+
+
+struct MainScreen: Logging {
+
+    func authenticate() {
+        log("Authentication was successful!")
+    }
+    
+}
